@@ -17,4 +17,5 @@ file_permissions=(
   ["/etc/shadow"]="0:0:400"
   ["/root"]="0:0:750"
   ["/root/.bash_profile"]="0:0:644"
+  ["/root/.bashrc"]="0:0:644"
 )

@@ -1,24 +1,36 @@
-# Reclaim boot decompression page cache to free maximum memory
-echo 3 > /proc/sys/vm/drop_caches 2>/dev/null || true
+# ~/.bashrc - Colorized interactive shell configuration
 
-cat << "EOF"
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
-  ____ _                         ____      _    __  __      _             _     
- / ___| |__   ___  __ _ _ __    |  _ \    / \  |  \/  |    / \   _ __ ___| |__  
-| |   | '_ \ / _ \/ _` | '_ \   | |_) |  / _ \ | |\/| |   / _ \ | '__/ __| '_ \ 
-| |___| | | |  __/ (_| | |_) |  |  _ <  / ___ \| |  | |  / ___ \| | | (__| | | |
- \____|_| |_|\___|\__,_| .__/   |_| \_\/_/   \_\_|  |_| /_/   \_\_|  \___|_| |_|
-                       |_|                                                      
-EOF
-echo "================================================================================"
-echo " Welcome to cheap-ram-arch! Memory-optimized minimal Arch Linux"
-echo "================================================================================"
-echo ""
-echo "Memory status:"
-free -h
-echo ""
-echo "Tips:"
-echo " - Drop cached blocks: echo 3 > /proc/sys/vm/drop_caches"
-echo " - Monitor memory: htop or top"
-echo " - Wi-Fi setup: iwctl"
-echo ""
+# Colorized dircolors
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+fi
+
+# Colorized command aliases
+alias ls='ls --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias diff='diff --color=auto'
+alias ip='ip -color=auto'
+
+alias ll='ls -alF --color=auto'
+alias la='ls -A --color=auto'
+alias l='ls -CF --color=auto'
+
+# Colorized man pages
+export LESS_TERMCAP_mb=$'\e[1;31m'
+export LESS_TERMCAP_md=$'\e[1;36m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;44;33m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;32m'
+export LESS_TERMCAP_ue=$'\e[0m'
+
+# Colorful prompt (PS1)
+# Red root user, cyan hostname, yellow directory path, bold green prompt symbol
+PS1='\[\e[1;31m\]\u\[\e[0m\]@\[\e[1;36m\]cheap-ram\[\e[0m\]:\[\e[1;33m\]\w\[\e[0m\]# '
