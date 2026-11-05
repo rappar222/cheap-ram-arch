@@ -1,0 +1,13 @@
+base
+dhcpcd
+htop
+iproute2
+iwd
+linux
+mkinitcpio
+mkinitcpio-archiso
+openssh
+procps-ng
+syslinux
+which
+zram-generator
