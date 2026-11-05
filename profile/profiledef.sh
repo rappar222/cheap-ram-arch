@@ -10,8 +10,8 @@ install_dir="arch"
 bootmodes=('bios.syslinux'
            'uefi.grub')
 pacman_conf="pacman.conf"
-airootfs_image_type="erofs"
-airootfs_image_tool_options=('-zlzma,109' -E 'ztailpacking')
+airootfs_image_type="squashfs"
+airootfs_image_tool_options=('-comp' 'zstd' '-b' '256K')
 bootstrap_tarball_compression=(xz -9e)
 file_permissions=(
   ["/etc/shadow"]="0:0:400"
