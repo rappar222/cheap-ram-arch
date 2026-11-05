@@ -1,4 +1,6 @@
-# Auto-run upon root login
+# Reclaim boot decompression page cache to free maximum memory
+echo 3 > /proc/sys/vm/drop_caches 2>/dev/null || true
+
 cat << "EOF"
 
   ____ _                         ____      _    __  __      _             _     
@@ -16,7 +18,7 @@ echo "Memory status:"
 free -h
 echo ""
 echo "Tips:"
+echo " - Drop cached blocks: echo 3 > /proc/sys/vm/drop_caches"
 echo " - Monitor memory: htop or top"
 echo " - Wi-Fi setup: iwctl"
-echo " - Network status: networkctl status"
 echo ""
