@@ -4,3 +4,4 @@ out/
 *.iso.tmp
 *.qcow2
 *.img
+release-artifacts/
